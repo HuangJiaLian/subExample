@@ -1,0 +1,21 @@
+#PBS -N Python
+#PBS -l nodes=1:ppn=16
+#PBS -j oe
+cd $PBS_O_WORKDIR
+
+# The stdout log 
+OUTPUT_LOG='std.log'
+
+
+# Output timestamp to stdout log
+echo '####################################' >> $OUTPUT_LOG
+date >> $OUTPUT_LOG
+echo '####################################' >> $OUTPUT_LOG
+########## No Need To Change The Line Above #################
+
+# Remove error output files if exists
+rm ./Python.* -f
+
+# Run the command(you may change to yours) and 
+# redirect the std output to stdout log.
+python sub_example.py >> $OUTPUT_LOG
